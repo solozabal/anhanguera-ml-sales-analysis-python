@@ -1,87 +1,147 @@
-# 📊 Análise de Vendas com Python 
+# 📊 Sales Analysis — Python, Pandas, SQLite & Data Visualization
 
-Este projeto realiza uma análise de vendas utilizando **Python**, **SQLite**, **Pandas**, **Matplotlib** e **Seaborn**. O objetivo é criar um banco de dados de vendas, carregar os dados em um DataFrame do Pandas, realizar análises e gerar visualizações gráficas.
+Welcome! This project offers a modern pipeline for sales analytics using Python. From SQLite database creation to advanced Pandas analytics and Matplotlib/Seaborn visualization, it’s ideal for learning, portfolio, or technical demonstration.
 
-## 📁 Estrutura do Projeto
+---
 
+## 🚀 Project Overview
 
-ml-analise-vendas
-│
-├── venv/               # Ambiente virtual
-├── .gitignore
-├── LICENSE
-├── requirements.txt    # Dependências do projeto
-└── main.py             # Script principal
+Analyze, visualize, and uncover insights from sales data with a modern and effective Python toolchain:
 
-## ⚙️ Requisitos
+- **Database**: Automatic SQLite setup and population
+- **Exploration**: Clean data, handle dates, descriptive statistics
+- **Analysis**: Sales by category, product, time period, and more
+- **Visualization**: Professional bar/column charts, pie charts, time series, heatmaps
 
-Python 3.x
-Pandas
-Matplotlib
-Seaborn
-SQLite3
+---
 
-## 🚀 Instalação
+## 🗂️ Project Structure
 
-1. Clone o repositório:
+```plaintext
+assets/
+    sales_barplot_example.png
+    sales_heatmap_example.png
+    sales_pie_example.png
+    sales_quantity_barplot_example.png
+    sales_trend_example.png
+    top_5_products_example.png
+.gitignore
+dados_vendas.db
+LICENSE
+main.py
+README.md
+requirements.txt
+```
 
-git clone https://github.com/solozabal/ml-analise-vendas.git
-cd ml-analise-vendas
+---
 
-2. Crie e ative um ambiente virtual:
+## 📥 Installation & Usage
 
-python -m venv venv
+1. Clone this repository:
+    ```bash
+    git clone https://github.com/solozabal/anhanguera-ml-sales-analysis-python.git
+    cd anhanguera-ml-sales-analysis-python
+    ```
 
-# No Windows
-.\venv\Scripts\activate
+2. Set up your virtual environment:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # or .\venv\Scripts\activate on Windows
+    ```
 
-# No Linux/macOS
-source venv/bin/activate
+3. Install the required libraries:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. Instale as dependências:
+4. Run the main analysis script:
+    ```bash
+    python main.py
+    ```
 
-pip install -r requirements.txt
+---
 
-## ▶️ Execução
-Para executar o script, certifique-se de que o ambiente virtual está ativado e execute o comando:
+## 🖼️ Example Output
 
-python main.py
+<p align="center">
+  <img src="assets/sales_barplot_example.png" alt="Sales by Category (Bar Plot)" width="450"/>
+  <br>
+  <em>Figure: Total Sales by Category</em>
+</p>
 
-## 📝 Descrição do Script
-O script main.py realiza as seguintes etapas:
+<p align="center">
+  <img src="assets/sales_pie_example.png" alt="Sales by Category (Pie Chart)" width="400"/>
+  <br>
+  <em>Figure: Sales Distribution by Category</em>
+</p>
 
-1. Criar e Popular o Banco de Dados
-Cria um banco de dados SQLite chamado dados_vendas.db.
-Cria a tabela vendas1 e insere dados de vendas.
+<p align="center">
+  <img src="assets/sales_quantity_barplot_example.png" alt="Sales Quantity by Category (Bar Plot)" width="400"/>
+  <br>
+  <em>Figure: Quantity of Sales by Category</em>
+</p>
 
-2. Carregar Dados no Pandas
-Carrega os dados da tabela vendas1 em um DataFrame do Pandas.
-Exibe as primeiras linhas, informações gerais, descrição estatística e valores ausentes do DataFrame.
+<p align="center">
+  <img src="assets/top_5_products_example.png" alt="Top 5 Products (Bar Plot)" width="420"/>
+  <br>
+  <em>Figure: Top 5 Products by Sales Value</em>
+</p>
 
-3. Análises com Pandas
-Converte a coluna data_venda para o tipo datetime.
-Extrai o mês e o ano da data da venda.
-Analisa o total de vendas e a quantidade de vendas por categoria, produto e mês.
+<p align="center">
+  <img src="assets/sales_trend_example.png" alt="Sales Trend (Line Plot)" width="500"/>
+  <br>
+  <em>Figure: Monthly Sales Trend</em>
+</p>
 
-4. Visualizações com Matplotlib e Seaborn
-Gera gráficos de barras, gráficos de pizza, gráficos de linha e um heatmap para visualizar os dados.
+<p align="center">
+  <img src="assets/sales_heatmap_example.png" alt="Correlation Heatmap" width="420"/>
+  <br>
+  <em>Figure: Correlation among Numeric Variables</em>
+</p>
 
-## 📊 Visualizações
+---
 
-Total de Vendas por Categoria
-Proporção de Vendas por Categoria
-Quantidade de Vendas por Categoria
-Top 5 Produtos mais Vendidos em Valor
-Vendas ao Longo dos Meses
-Correlação entre Variáveis Numéricas
+## ⚡ Usage Example
 
-## 📜 Licença
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+```python
+# main.py (snippet)
+import pandas as pd
 
-## 🤝 Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+# After loading your DataFrame `df`
+monthly_sales = df.groupby(['ano', 'mes'])['valor_venda'].sum().reset_index()
+print(monthly_sales.head())
 
-## 📬 Contato
-Pedro Solozabal
-✉️ contato@solozabal.com.br
-🔗 https://github.com/solozabal/ml-analise-vendas
+# Custom plot: Top 5 products
+top_products = df.groupby('produto')['valor_venda'].sum().sort_values(ascending=False).head(5)
+top_products.plot(kind='bar', title='Top 5 Products by Sales')
+```
+
+---
+
+## 🛠️ Customization Tips
+
+- **Add more data:** Connect to your own data source (Excel, CSV, API, etc.) by changing the data import section.
+- **Expand database schema:** Add new columns (e.g., region, sales rep), update queries and analyses accordingly.
+- **DIY dashboards:** Integrate with [Streamlit](https://streamlit.io/) for quick interactive dashboards.
+- **Automate reports:** Use Python’s schedule library or GitHub Actions to refresh analyses periodically.
+
+---
+
+## 🌟 Standout Portfolio Features
+
+- End-to-end workflow: DB creation, ETL, EDA, and beautiful plots in a single script
+- Easy-to-follow code: Great for sharing on your portfolio or technical blog
+- Modular for scaling up: Add advanced ML or business logic as you grow
+- Recruiter-friendly: Demonstrates both solid Python and data analysis skills
+
+---
+
+## 👤 Author
+
+[![LinkedIn: Pedro Solozabal](https://img.shields.io/badge/-Pedro%20Solozabal-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pedrosolozabal/)](https://www.linkedin.com/in/pedrosolozabal/)
+
+---
+
+## ⚖️ License
+
+Distributed under the MIT License. See `LICENSE` for more information.

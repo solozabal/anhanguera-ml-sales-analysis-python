@@ -132,7 +132,6 @@ top_products.plot(kind='bar', title='Top 5 Products by Sales')
 - End-to-end workflow: DB creation, ETL, EDA, and beautiful plots in a single script
 - Easy-to-follow code: Great for sharing on your portfolio or technical blog
 - Modular for scaling up: Add advanced ML or business logic as you grow
-- Recruiter-friendly: Demonstrates both solid Python and data analysis skills
 
 ---
 

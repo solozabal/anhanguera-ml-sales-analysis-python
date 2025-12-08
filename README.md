@@ -135,9 +135,9 @@ top_products.plot(kind='bar', title='Top 5 Products by Sales')
 
 ---
 
-## 💡 License
+## 📄 License
 
-This project is licensed under the MIT License.
+Licensed under the [MIT License](LICENSE).
 
 ---
 
